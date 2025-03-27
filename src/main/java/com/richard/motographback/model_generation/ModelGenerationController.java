@@ -30,11 +30,14 @@ public class ModelGenerationController {
     public List<ModelGeneration> findAll(
             @RequestParam(required = false) Long brandId,
             @RequestParam(required = false) Long modelId,
-            @RequestParam(required = false) Integer endYear
+            @RequestParam(required = false) Integer minCyl,
+            @RequestParam(required = false) Integer maxCyl
 
     ) {
+        System.out.println(minCyl);
         Specification<ModelGeneration> filter = Specification.where(modelId == null ? null :  isModel(modelId))
-                .and(brandId == null ? null : belongsToBrand(brandId));
+                .and(brandId == null ? null : belongsToBrand(brandId))
+                .and(engineCcBetween(minCyl, maxCyl));
         return modelGenerationRepository.findAll(filter);
     }
 

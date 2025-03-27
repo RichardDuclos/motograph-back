@@ -3,17 +3,16 @@ package com.richard.motographback.model_generation;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.richard.motographback.model.Model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "MODEL_GENERATION")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+
+@Table(name = "MODEL_GENERATION")
+
 public class ModelGeneration {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -49,4 +48,103 @@ public class ModelGeneration {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Model model;
+
+    @Column
+    private String imageUrl;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getStartYear() {
+        return startYear;
+    }
+
+    public void setStartYear(Integer startYear) {
+        this.startYear = startYear;
+    }
+
+    public Integer getEndYear() {
+        return endYear;
+    }
+
+    public void setEndYear(Integer endYear) {
+        this.endYear = endYear;
+    }
+
+    public Integer getEngineCc() {
+        return engineCc;
+    }
+
+    public void setEngineCc(Integer engineCc) {
+        this.engineCc = engineCc;
+    }
+
+    public Integer getHorsePower() {
+        return horsePower;
+    }
+
+    public void setHorsePower(Integer horsePower) {
+        this.horsePower = horsePower;
+    }
+
+    public Integer getTorque() {
+        return torque;
+    }
+
+    public void setTorque(Integer torque) {
+        this.torque = torque;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public Integer getTopSpeed() {
+        return topSpeed;
+    }
+
+    public void setTopSpeed(Integer topSpeed) {
+        this.topSpeed = topSpeed;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

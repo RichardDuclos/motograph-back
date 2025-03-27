@@ -9,11 +9,12 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "BRAND")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Table(name = "BRAND")
+
 public class Brand {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -25,4 +26,28 @@ public class Brand {
     @JsonIgnoreProperties({"brand"})
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "brand")
     private Set<Model> models;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Model> getModels() {
+        return models;
+    }
+
+    public void setModels(Set<Model> models) {
+        this.models = models;
+    }
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 
 public class ModelGenerationSpecification {
-    private ModelGenerationSpecification() {}
+    public ModelGenerationSpecification() {}
 
     public static Specification<ModelGeneration> endYearBefore(Integer endYear) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.lessThan(root.get("endYear"), endYear);
@@ -23,6 +23,11 @@ public class ModelGenerationSpecification {
             Join<Model, ModelGeneration> model = root.join("model");
             Join<Brand, ModelGeneration> brand = model.join("brand");
             return criteriaBuilder.equal(brand.get("id"), brandId);
+        };
+    }
+    public static Specification<ModelGeneration> engineCcBetween(Integer minCyl, Integer maxCyl) {
+        return (root, query, criteriaBuilder) -> {
+            return criteriaBuilder.between(root.get("engineCc"), minCyl, maxCyl);
         };
     }
 }
